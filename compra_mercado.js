@@ -46,7 +46,8 @@ const lerLista = (div) => {
                            <td>R$ ${valor.toFixed(2)}</td>
                            <td>${quantidade}</td> 
                            <td>R$ ${total.toFixed(2)}</td>
-                           <td><button class="btn btn-warning" onclick="retirar(${index}, '${div}')">Retirar</button></td>
+                           <td><button class="btn btn-warning" onclick="retirar(${index}, '${div}')">Retirar</button>
+                           <button class="btn btn-warning" onclick="editar(${index}, '${div}')">Editar</button></td>
                            </tr>`;
 
     });
@@ -75,4 +76,41 @@ const retirar = (index, div) => {
 
 
 
+const editar = (index, div) => {
+    document.getElementById("nome_produto").value = produtos_mercado[index];
+    document.getElementById("valor_produto").value = preco_mercado[index];
+    document.getElementById("qtd_itens").value = qtds[index];
 
+
+    document.getElementById("nome_produto").focus();
+
+    document.getElementById("confirm_button").style.display="none";
+    document.getElementById("confirm_edit").style.display="block";
+
+    const confirmEditBtn = document.getElementById("confirm_edit");
+
+    // Substituir o botão por um clone para remover event listeners antigos
+    const newBtn = confirmEditBtn.cloneNode(true);
+    confirmEditBtn.replaceWith(newBtn);
+
+    newBtn.style.display = "block";
+
+    newBtn.addEventListener('click', function(){
+        confirmarEdicao(index, div);
+    });
+}
+
+
+const confirmarEdicao = (index, div) => {
+    produtos_mercado[index] = document.getElementById("nome_produto").value;
+    preco_mercado[index] = document.getElementById("valor_produto").value;
+    qtds[index] = document.getElementById("qtd_itens").value;
+
+    
+
+    document.getElementById("confirm_button").style.display="block";
+    document.getElementById("confirm_edit").style.display="none";
+
+
+    lerLista(div);
+}
