@@ -38,7 +38,10 @@ const lerLista = (div) => {
         const quantidade = parseInt(qtds[index]);
         const total = valor * quantidade;
 
+        
+
         totalGeral += total;
+
 
 
                 tabela += `<tr>
@@ -58,6 +61,8 @@ const lerLista = (div) => {
                 <td colspan=2>R$ ${totalGeral.toFixed(2)}</td>
                 </tr>`
 
+
+    document.getElementById(div).style.display="block";            
     document.getElementById(div).innerHTML = tabela;
 
     document.getElementById("nome_produto").value = "";
@@ -89,7 +94,7 @@ const editar = (index, div) => {
 
     const confirmEditBtn = document.getElementById("confirm_edit");
 
-    // Substituir o botão por um clone para remover event listeners antigos
+
     const newBtn = confirmEditBtn.cloneNode(true);
     confirmEditBtn.replaceWith(newBtn);
 
