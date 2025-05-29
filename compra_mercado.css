@@ -1,0 +1,13 @@
+h1{
+    text-align: center;
+    margin: 5px;
+}
+
+label{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#resultado{
+    margin-top: 10px;
+}
